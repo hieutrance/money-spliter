@@ -1,12 +1,10 @@
 def calculate_balances(users, expenses):
-    # Lấy thêm thông tin qr_url (nếu có, nếu không thì để trống)
     balances = {user['id']: {
         'name': user['name'], 
         'balance': 0.0,
-        'qr_url': user.get('qr_url', '') # <--- Dòng mới
+        'qr_url': user.get('qr_url', '') 
     } for user in users}
     
-    # ... (Phần logic tính toán cộng trừ bên dưới giữ nguyên) ...
     for exp in expenses:
         amount = float(exp['amount'])
         payer_id = exp['payer_id']
@@ -28,7 +26,6 @@ def suggest_settlements(balances):
         if data['balance'] < -1.0: 
             debtors.append({'name': data['name'], 'amount': abs(data['balance'])})
         elif data['balance'] > 1.0:
-            # Truyền thêm qr_url vào danh sách chủ nợ
             creditors.append({'name': data['name'], 'amount': data['balance'], 'qr_url': data['qr_url']})
             
     debtors.sort(key=lambda x: x['amount'], reverse=True)
@@ -46,7 +43,7 @@ def suggest_settlements(balances):
         transactions.append({
             'from': debtor['name'],
             'to': creditor['name'],
-            'to_qr': creditor['qr_url'], # <--- Truyền link QR ra Frontend
+            'to_qr': creditor['qr_url'], 
             'amount': round(settle_amount)
         })
         

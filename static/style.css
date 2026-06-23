@@ -1,7 +1,7 @@
 /* Khởi tạo biến màu sắc chủ đạo */
 :root {
     --bg-white: #ffffff;
-    --app-bg: #f5f7fa;
+    --app-bg: #e6f6f7;
     --primary-pink: #46e4c2;     /* Hồng pastel đậm đà một chút cho nổi bật */
     --hover-pink: #549688;
     --accent-turquoise: #40e0d0; /* Xanh ngọc làm điểm nhấn */
@@ -27,9 +27,9 @@ body {
     background: linear-gradient(135deg, var(--primary-pink), var(--hover-pink));
     color: var(--bg-white);
     text-align: center;
-    padding: 2rem 0;
+    padding: 1rem 0;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .container {

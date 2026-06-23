@@ -67,4 +67,4 @@ def delete_expense(expense_id):
     db.collection('expenses').document(expense_id).delete()
     return True
 
-init_group_members()
+# init_group_members()
