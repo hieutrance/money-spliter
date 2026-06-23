@@ -1,0 +1,260 @@
+/* Khởi tạo biến màu sắc chủ đạo */
+:root {
+    --bg-white: #ffffff;
+    --app-bg: #f5f7fa;
+    --primary-pink: #46e4c2;     /* Hồng pastel đậm đà một chút cho nổi bật */
+    --hover-pink: #549688;
+    --accent-turquoise: #40e0d0; /* Xanh ngọc làm điểm nhấn */
+    --text-dark: #2d3748;
+    --text-gray: #718096;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--app-bg);
+    color: var(--text-dark);
+}
+
+/* Header dài cả màn hình */
+.full-width-header {
+    width: 100vw;
+    background: linear-gradient(135deg, var(--primary-pink), var(--hover-pink));
+    color: var(--bg-white);
+    text-align: center;
+    padding: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    border-left: 4px solid var(--accent-turquoise);
+    padding-left: 10px;
+}
+
+/* Khu vực Slider lướt ngang vô hạn */
+.slider-section {
+    margin-bottom: 3rem;
+}
+
+.horizontal-slider {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory; /* Tạo cảm giác khựng lại ở từng thẻ khi lướt */
+}
+
+/* Ẩn thanh cuộn mặc định cho đẹp mắt */
+.horizontal-slider::-webkit-scrollbar {
+    height: 8px;
+}
+.horizontal-slider::-webkit-scrollbar-thumb {
+    background: var(--primary-pink);
+    border-radius: 4px;
+}
+
+.expense-card {
+    background-color: var(--bg-white);
+    min-width: 280px;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    scroll-snap-align: start;
+    border-top: 4px solid var(--accent-turquoise); /* Điểm nhấn xanh ngọc */
+    flex-shrink: 0;
+}
+
+.expense-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.expense-card .amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-pink);
+    margin-bottom: 0.5rem;
+}
+
+/* Layout 2 cột cho Form và Kết quả */
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Style cho Form */
+.form-section, .result-section {
+    background: var(--bg-white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: var(--accent-turquoise);
+}
+
+/* Tùy biến checkbox màu xanh ngọc */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--primary-pink);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: var(--hover-pink);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Layout cho tiêu đề và nút xóa cùng 1 hàng */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.card-header h3 {
+    margin-bottom: 0; /* Bỏ margin cũ của h3 */
+}
+
+/* Nút xóa trong suốt, hover hiện màu đỏ */
+.btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.5;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+.btn-delete:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Danh sách người tham gia */
+.participants-list {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    margin-top: 0.7rem;
+    padding-top: 0.7rem;
+    border-top: 1px dashed #e2e8f0;
+    line-height: 1.4;
+}
+
+/* Nút chuyển khoản QR */
+.btn-transfer {
+    background-color: var(--accent-turquoise);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-transfer:hover {
+    background-color: #2bbbb0;
+}
+
+/* Modal Popup */
+.modal {
+    display: none; /* Ẩn mặc định */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    background-color: var(--bg-white);
+    margin: 15vh auto;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-gray);
+}
+
+.close-btn:hover {
+    color: var(--primary-pink);
+}

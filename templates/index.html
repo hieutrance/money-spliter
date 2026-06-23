@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chia Tiền </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="full-width-header">
+        <h1>Thống kê thu chi</h1>
+    </header>
+
+    <main class="container">
+        <section class="slider-section">
+            <h2 class="section-title">Lịch sử đã mua</h2>
+            <div class="horizontal-slider" id="expenses-slider">
+
+            </div>
+        </section>
+
+        <div class="grid-layout">
+            <section class="form-section">
+                <h2 class="section-title">Thêm khoản chi mới</h2>
+                <form id="expense-form">
+                    <div class="form-group">
+                        <label for="description">Tên khoản chi:</label>
+                        <input type="text" id="description" placeholder="VD: Tiền mua bia" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="amount">Tổng số tiền (VNĐ):</label>
+                        <input type="number" id="amount" placeholder="VD: 500000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="payer">Người đã trả tiền:</label>
+                        <select id="payer" required>
+                            <option value="">-- Chọn người trả --</option>
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Những người tham gia chia tiền:</label>
+                        <div class="checkbox-group" id="participants-list">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="user_1" checked>
+                                <span class="checkmark"></span>
+                                Thành viên 1
+                            </label>
+                            </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Thêm Hóa Đơn</button>
+                </form>
+            </section>
+
+            <section class="result-section">
+                <h2 class="section-title">Thống kê</h2>
+                <div class="settlement-box" id="settlement-results">
+                    <p class="empty-state">Chưa có dữ liệu tính toán.</p>
+                    </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="qr-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 style="margin-bottom: 10px; color: var(--accent-turquoise);">Quét QR Thanh Toán</h3>
+            <p id="modal-transfer-info" style="margin-bottom: 15px;"></p>
+            <img id="modal-qr-img" src="" alt="Mã QR" style="width: 100%; max-width: 500px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
